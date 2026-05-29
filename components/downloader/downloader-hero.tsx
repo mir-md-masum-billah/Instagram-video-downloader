@@ -2,15 +2,20 @@ import { Download } from 'lucide-react';
 
 export function DownloaderHero() {
   return (
-    <div className="flex flex-col items-center justify-center text-center space-y-4 mb-8">
-      <div className="inline-flex items-center justify-center p-3 bg-primary/10 text-primary">
-        <Download className="w-6 h-6" />
+    <div className="flex flex-col items-center justify-center text-center space-y-5 mb-10">
+      {/* Icon badge */}
+      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cloud-gray bg-ash-gray text-steel-gray text-xs font-medium font-inter shadow-subtle">
+        <Download className="w-3.5 h-3.5 text-ember-glow" />
+        <span>Free · Fast · No Sign-up</span>
       </div>
-      <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
-        Social Media Downloader
+
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold tracking-tight text-ink-black leading-tight max-w-2xl">
+        Social downloads <br className="hidden sm:inline" />
+        with <span className="text-primary">superpowers</span>
       </h1>
-      <p className="text-sm sm:text-base text-muted-foreground max-w-lg leading-relaxed">
-        Download high-quality videos and images from Instagram and X (Twitter) instantly. Free, fast, and no registration required.
+
+      <p className="text-sm sm:text-base text-steel-gray max-w-md leading-relaxed font-inter">
+        Paste any public Instagram or X (Twitter) link to instantly download high-quality videos and images.
       </p>
     </div>
   );

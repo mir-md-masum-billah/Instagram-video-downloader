@@ -7,6 +7,7 @@ import { DownloaderHero } from '@/components/downloader/downloader-hero';
 import { PlatformBadges } from '@/components/downloader/platform-badges';
 import { DownloaderForm } from '@/components/downloader/downloader-form';
 import { MediaPreview } from '@/components/downloader/media-preview';
+import { FeaturesSection } from '@/components/downloader/features-section';
 
 interface MediaResponse {
   type: 'video' | 'image';
@@ -179,35 +180,44 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white relative overflow-hidden">
       <InstallPWA />
 
-      <main className="container max-w-5xl mx-auto px-4 py-20 sm:py-24 relative space-y-8">
-        <DownloaderHero />
+      {/* Premium Dub.co dot grid background with radial fade */}
+      <div className="pointer-events-none fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-[radial-gradient(#e5e5e5_1.5px,transparent_1.5px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] opacity-70" />
+      </div>
 
-        <PlatformBadges />
-
-        <DownloaderForm
-          url={url}
-          setUrl={handleUrlChange}
-          loading={loading}
-          error={error}
-          setError={setError}
-          onSubmit={handleFetchMedia}
-          onReset={handleReset}
-          hasMedia={!!media}
-        />
-
-        {media && (
-          <MediaPreview
-            media={media}
-            downloading={downloading}
-            downloadingFormat={downloadingFormat}
-            downloadStatus={downloadStatus}
-            handleDownload={handleDownload}
+      <main className="relative z-10 container max-w-5xl mx-auto px-4">
+        {/* Hero + Tool Section */}
+        <section className="py-16 sm:py-24 space-y-8">
+          <DownloaderHero />
+          <PlatformBadges />
+          <DownloaderForm
+            url={url}
+            setUrl={handleUrlChange}
+            loading={loading}
+            error={error}
             setError={setError}
+            onSubmit={handleFetchMedia}
+            onReset={handleReset}
+            hasMedia={!!media}
           />
-        )}
+
+          {media && (
+            <MediaPreview
+              media={media}
+              downloading={downloading}
+              downloadingFormat={downloadingFormat}
+              downloadStatus={downloadStatus}
+              handleDownload={handleDownload}
+              setError={setError}
+            />
+          )}
+        </section>
+
+        {/* Features Section — shown when no media is displayed */}
+        {!media && <FeaturesSection />}
       </main>
     </div>
   );

@@ -50,9 +50,9 @@ export function MediaPreview({
 }: MediaPreviewProps) {
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
-      <Card className="border border-border overflow-hidden bg-card">
+      <Card className="border border-cloud-gray overflow-hidden bg-white shadow-sm rounded-xl">
         {/* Aspect Ratio Controlled Media Preview Container */}
-        <div className="relative w-full bg-neutral-950 flex items-center justify-center max-h-[60vh] overflow-hidden border-b border-border">
+        <div className="relative w-full bg-ink-black flex items-center justify-center max-h-[60vh] overflow-hidden border-b border-cloud-gray">
           {media.type === 'video' ? (
             <video
               controls
@@ -75,12 +75,12 @@ export function MediaPreview({
 
         {/* Media Details */}
         {media.title && (
-          <CardHeader className="bg-muted/30 border-b border-border py-4 px-4 sm:px-6">
-            <CardTitle className="text-sm font-semibold leading-snug line-clamp-2">
+          <CardHeader className="bg-ash-gray/40 border-b border-cloud-gray py-4 px-4 sm:px-6">
+            <CardTitle className="text-sm font-semibold leading-snug line-clamp-2 text-jet-black font-inter">
               {media.title}
             </CardTitle>
             {media.description && (
-              <p className="text-xs text-muted-foreground line-clamp-2 mt-1">
+              <p className="text-xs text-steel-gray line-clamp-2 mt-1 font-inter">
                 {media.description}
               </p>
             )}
@@ -91,13 +91,13 @@ export function MediaPreview({
         <CardContent className="p-4 sm:p-6 space-y-4">
           {media.availableFormats && media.availableFormats.video.length > 0 ? (
             <div className="space-y-4">
-              <div className="flex items-center gap-2 text-sm font-medium text-foreground">
-                <Download className="h-4 w-4" />
+              <div className="flex items-center gap-2 text-sm font-semibold text-jet-black font-inter">
+                <Download className="h-4 w-4 text-ember-glow" />
                 <span>{media.externalDownload ? 'Download Options' : 'Select Video Quality'}</span>
               </div>
 
               {media.externalDownload && (
-                <p className="text-xs text-muted-foreground bg-muted p-3 border border-border">
+                <p className="text-xs text-steel-gray bg-ash-gray/60 p-3.5 border border-cloud-gray rounded-2xl font-inter">
                   💡 Click a download button below to load the video details on the hosting service, where you can save it.
                 </p>
               )}
@@ -112,14 +112,17 @@ export function MediaPreview({
                       key={index}
                       onClick={() => handleDownload(format.url, format.isExternal, formatId)}
                       disabled={downloading}
-                      variant={format.isExternal ? "outline" : "default"}
-                      className="h-10 text-xs flex items-center justify-between border border-border hover:bg-accent hover:text-accent-foreground font-medium w-full"
+                      className={`h-11 text-xs flex items-center justify-between font-medium w-full rounded-full shadow-subtle border ${
+                        format.isExternal 
+                          ? "bg-white border-cloud-gray text-jet-black hover:bg-ash-gray hover:border-cool-gray" 
+                          : "bg-white border-cloud-gray text-jet-black hover:bg-ash-gray hover:border-cool-gray"
+                      }`}
                     >
                       <div className="flex items-center gap-2 truncate">
                         {isThisDownloading ? (
-                          <Loader2 className="h-3.5 w-3.5 animate-spin shrink-0" />
+                          <Loader2 className="h-3.5 w-3.5 animate-spin shrink-0 text-ember-glow" />
                         ) : (
-                          <Download className="h-3.5 w-3.5 shrink-0" />
+                          <Download className="h-3.5 w-3.5 shrink-0 text-steel-gray" />
                         )}
                         <span className="truncate">
                           {isThisDownloading
@@ -130,17 +133,17 @@ export function MediaPreview({
 
                       <div className="flex items-center gap-1.5 shrink-0 ml-2">
                         {format.isExternal && (
-                          <ExternalLink className="h-3 w-3 text-muted-foreground" />
+                          <ExternalLink className="h-3 w-3 text-steel-gray" />
                         )}
                         {!format.isExternal && format.hasAudio && (
-                          <Badge variant="secondary" className="h-4 px-1 text-[9px] rounded-sm bg-primary/10 text-primary border-0">
+                          <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-ember-glow/10 text-ember-glow">
                             <Volume2 className="h-2.5 w-2.5 mr-0.5" /> HD
-                          </Badge>
+                          </span>
                         )}
                         {!format.isExternal && !format.hasAudio && (
-                          <Badge variant="destructive" className="h-4 px-1 text-[9px] rounded-sm bg-destructive/10 text-destructive border-0">
+                          <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-warning-red/10 text-warning-red">
                             <VolumeX className="h-2.5 w-2.5 mr-0.5" /> Muted
-                          </Badge>
+                          </span>
                         )}
                       </div>
                     </Button>
@@ -150,8 +153,8 @@ export function MediaPreview({
 
               {/* Audio formats */}
               {media.availableFormats.audio && media.availableFormats.audio.length > 0 && (
-                <div className="space-y-3 pt-4 border-t border-border">
-                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                <div className="space-y-3 pt-4 border-t border-cloud-gray">
+                  <div className="text-xs font-bold text-jet-black uppercase tracking-wider font-inter">
                     Audio Tracks Only
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -164,16 +167,15 @@ export function MediaPreview({
                           key={index}
                           onClick={() => handleDownload(format.url, false, formatId)}
                           disabled={downloading}
-                          variant="secondary"
-                          className="h-10 text-xs flex items-center justify-between border border-border font-medium w-full"
+                          className="h-11 text-xs flex items-center justify-between bg-ash-gray hover:bg-cloud-gray/40 border border-cloud-gray text-jet-black font-medium w-full rounded-full shadow-subtle"
                         >
                           <div className="flex items-center gap-2 truncate">
                             {isThisDownloading ? (
-                              <Loader2 className="h-3.5 w-3.5 animate-spin shrink-0" />
+                              <Loader2 className="h-3.5 w-3.5 animate-spin shrink-0 text-ember-glow" />
                             ) : (
-                              <Download className="h-3.5 w-3.5 shrink-0" />
+                              <Download className="h-3.5 w-3.5 shrink-0 text-steel-gray" />
                             )}
-                            <span className="truncate">
+                            <span className="truncate font-inter">
                               {isThisDownloading
                                 ? (downloadStatus === 'starting' ? 'Starting...' : 'Downloading...')
                                 : `Audio - ${format.quality}`}
@@ -192,17 +194,17 @@ export function MediaPreview({
               onClick={() => handleDownload()}
               disabled={downloading}
               size="lg"
-              className="w-full h-11 text-sm font-medium flex items-center justify-center gap-2"
+              className="w-full h-11 text-sm font-semibold bg-ember-glow hover:bg-ember-glow/95 text-white flex items-center justify-center gap-2 rounded-full shadow-subtle font-inter border-0"
             >
               {downloading ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  {downloadStatus === 'starting' ? 'Starting...' : 'Downloading...'}
+                  <span>{downloadStatus === 'starting' ? 'Starting...' : 'Downloading...'}</span>
                 </>
               ) : (
                 <>
                   <Download className="h-4 w-4" />
-                  Download {media.type === 'video' ? 'Video' : 'Image'}
+                  <span>Download {media.type === 'video' ? 'Video' : 'Image'}</span>
                 </>
               )}
             </Button>

@@ -2,13 +2,13 @@ import PWARegister from "@/components/PWARegister";
 import { Footer } from "@/components/section/Footer";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
-import { Bangers, Kalam, JetBrains_Mono } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/section/Header";
 
-const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 
 export const viewport = {
@@ -22,10 +22,10 @@ export const viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.rudranboitei.com/'),
   title: {
-    default: "grabit2me - Free Social Media Video Downloader | Instagram, X, YouTube, Threads",
+    default: "grabit2me - Free Social Media Video Downloader | Instagram & X",
     template: "%s | grabit2me"
   },
-  description: "Download videos and images from Instagram, X (Twitter), Threads, LinkedIn, Snapchat, and YouTube instantly. Free, fast, and no login required. Best social media video downloader tool.",
+  description: "Download videos and images from Instagram and X (Twitter) instantly. Free, fast, and no login required. The simplest social media downloader tool.",
   keywords: [
     "video downloader",
     "instagram downloader",
@@ -34,11 +34,6 @@ export const metadata: Metadata = {
     "x downloader",
     "twitter downloader",
     "twitter video downloader",
-    "threads downloader",
-    "youtube downloader",
-    "youtube video downloader",
-    "linkedin video downloader",
-    "snapchat downloader",
     "social media downloader",
     "download videos",
     "download reels",
@@ -76,7 +71,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.rudranboitei.com/',
     title: "grabit2me - Social Media Video Downloader",
-    description: "Download videos and images from Instagram, X (Twitter), Threads, LinkedIn, Snapchat, and YouTube instantly",
+    description: "Download videos and images from Instagram and X (Twitter) instantly. Free, fast, no login required.",
     siteName: "grabit2me",
     images: [
       {
@@ -91,7 +86,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "grabit2me - Social Media Video Downloader",
-    description: "Download videos and images from Instagram, X (Twitter), Threads, LinkedIn, Snapchat, and YouTube instantly",
+    description: "Download videos and images from Instagram and X (Twitter) instantly. Free, fast, no login required.",
     images: [`${process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.rudranboitei.com/'}/og.png`],
     creator: "@grabit2me",
   },
@@ -114,7 +109,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("font-mono", jetbrainsMono.variable)}>
+    <html lang="en" className={cn("font-sans antialiased", inter.variable)}>
       <head>
         <meta name="application-name" content="GrabIt" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -155,9 +150,7 @@ export default function RootLayout({
         <link rel="apple-touch-startup-image" media="(prefers-color-scheme: dark)" href="/ios-dark.png" />
         <link rel="apple-touch-startup-image" href="/ios-tinted.png" />
       </head>
-      <body
-        className={`${jetbrainsMono.variable} antialiased`}
-      >
+      <body className={inter.variable}>
         <Header />
         <PWARegister />
         <Analytics />
