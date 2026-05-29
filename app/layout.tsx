@@ -1,24 +1,15 @@
 import PWARegister from "@/components/PWARegister";
 import { Footer } from "@/components/section/Footer";
-import { HeroHeader } from "@/components/section/Header";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
-import { Bangers, Kalam } from 'next/font/google';
+import { Bangers, Kalam, JetBrains_Mono } from 'next/font/google';
 import "./globals.css";
+import { cn } from "@/lib/utils";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { Header } from "@/components/section/Header";
 
-const bangers = Bangers({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-bangers',
-  display: 'swap',
-});
+const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' });
 
-const kalam = Kalam({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-kalam',
-  display: 'swap',
-});
 
 export const viewport = {
   width: "device-width",
@@ -29,7 +20,7 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.vercel.app/'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.rudranboitei.com/'),
   title: {
     default: "grabit2me - Free Social Media Video Downloader | Instagram, X, YouTube, Threads",
     template: "%s | grabit2me"
@@ -56,7 +47,7 @@ export const metadata: Metadata = {
     "online video downloader",
     "grabit2me",
   ],
-  authors: [{ name: "grabit2me", url: "https://grabit2me.vercel.app" }],
+  authors: [{ name: "grabit2me", url: "https://grabit2me.rudranboitei.com" }],
   creator: "grabit2me",
   publisher: "grabit2me",
   robots: {
@@ -83,13 +74,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.vercel.app/',
+    url: process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.rudranboitei.com/',
     title: "grabit2me - Social Media Video Downloader",
     description: "Download videos and images from Instagram, X (Twitter), Threads, LinkedIn, Snapchat, and YouTube instantly",
     siteName: "grabit2me",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.vercel.app/'}/og.png`,
+        url: `${process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.rudranboitei.com/'}/og.png`,
         width: 1200,
         height: 630,
         alt: "grabit2me - Download videos from Instagram, X, YouTube & more",
@@ -101,7 +92,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "grabit2me - Social Media Video Downloader",
     description: "Download videos and images from Instagram, X (Twitter), Threads, LinkedIn, Snapchat, and YouTube instantly",
-    images: [`${process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.vercel.app/'}/og.png`],
+    images: [`${process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.rudranboitei.com/'}/og.png`],
     creator: "@grabit2me",
   },
   icons: {
@@ -123,7 +114,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={cn("font-mono", jetbrainsMono.variable)}>
       <head>
         <meta name="application-name" content="GrabIt" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -165,13 +156,12 @@ export default function RootLayout({
         <link rel="apple-touch-startup-image" href="/ios-tinted.png" />
       </head>
       <body
-        className={`${kalam.variable} ${bangers.variable} antialiased`}
-        style={{ fontFamily: 'var(--font-kalam), ui-sans-serif, system-ui, sans-serif' }}
+        className={`${jetbrainsMono.variable} antialiased`}
       >
-        <HeroHeader />
+        <Header />
         <PWARegister />
-        <Analytics/>
-        {children}
+        <Analytics />
+        <TooltipProvider>{children}</TooltipProvider>
         <Footer />
       </body>
     </html>
