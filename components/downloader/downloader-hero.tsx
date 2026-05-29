@@ -10,8 +10,7 @@ export function DownloaderHero() {
       </div>
 
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold tracking-tight text-ink-black leading-tight max-w-2xl">
-        Social downloads <br className="hidden sm:inline" />
-        with <span className="text-primary">superpowers</span>
+        Instagram & X Media Downloader
       </h1>
 
       <p className="text-sm sm:text-base text-steel-gray max-w-md leading-relaxed font-inter">

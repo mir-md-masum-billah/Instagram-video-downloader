@@ -20,7 +20,7 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.rudranboitei.com/'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.vercel.app/'),
   title: {
     default: "grabit2me - Free Social Media Video Downloader | Instagram & X",
     template: "%s | grabit2me"
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     "online video downloader",
     "grabit2me",
   ],
-  authors: [{ name: "grabit2me", url: "https://grabit2me.rudranboitei.com" }],
+  authors: [{ name: "grabit2me", url: "https://grabit2me.vercel.app" }],
   creator: "grabit2me",
   publisher: "grabit2me",
   robots: {
@@ -69,13 +69,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.rudranboitei.com/',
+    url: process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.vercel.app/',
     title: "grabit2me - Social Media Video Downloader",
     description: "Download videos and images from Instagram and X (Twitter) instantly. Free, fast, no login required.",
     siteName: "grabit2me",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.rudranboitei.com/'}/og.png`,
+        url: `${process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.vercel.app/'}/og.png`,
         width: 1200,
         height: 630,
         alt: "grabit2me - Download videos from Instagram, X, YouTube & more",
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "grabit2me - Social Media Video Downloader",
     description: "Download videos and images from Instagram and X (Twitter) instantly. Free, fast, no login required.",
-    images: [`${process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.rudranboitei.com/'}/og.png`],
+    images: [`${process.env.NEXT_PUBLIC_APP_URL || 'https://grabit2me.vercel.app/'}/og.png`],
     creator: "@grabit2me",
   },
   icons: {

@@ -8,6 +8,8 @@ import { PlatformBadges } from '@/components/downloader/platform-badges';
 import { DownloaderForm } from '@/components/downloader/downloader-form';
 import { MediaPreview } from '@/components/downloader/media-preview';
 import { FeaturesSection } from '@/components/downloader/features-section';
+import { StepsSection } from '@/components/downloader/steps-section';
+import { TestimonialsSection } from '@/components/downloader/testimonials-section';
 
 interface MediaResponse {
   type: 'video' | 'image';
@@ -216,8 +218,14 @@ export default function Home() {
           )}
         </section>
 
+        {/* Steps Guide Section */}
+        <StepsSection />
+
         {/* Features Section — shown when no media is displayed */}
         {!media && <FeaturesSection />}
+
+        {/* Testimonials Section */}
+        <TestimonialsSection />
       </main>
     </div>
   );
