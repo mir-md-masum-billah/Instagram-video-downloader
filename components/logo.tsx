@@ -34,7 +34,7 @@ export const Logo = ({ className, ...props }: React.ComponentProps<"div">) => (
       </svg>
     </div>
     <span className="font-heading font-bold text-lg sm:text-xl tracking-tight text-jet-black">
-      reel<span className="text-ember-glow">download</span>
+      Grab<span className="text-ember-glow">It2me</span>
     </span>
   </div>
-)
+);
